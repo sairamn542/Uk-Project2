@@ -1,0 +1,146 @@
+/* General styles */
+header {
+    margin: 8px 70px 0 70px;
+    position: relative;
+    z-index: 10;
+    background-color: #fff;
+    font-family: sans-serif;
+    font-weight: 400;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: #fff;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.hamburger, .close {
+    display: none; /* Hide both icons by default */
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.service {
+    position: relative;
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #fff;
+}
+
+.service ul {
+    display: none;
+    list-style: none;
+    padding: 10px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-radius: 5px;
+    z-index: 40;
+    transition: all 0.3s ease;
+    width: max-content;
+    min-width: 150px;
+    margin: 10px -10px;
+}
+
+.service:hover ul {
+    display: block;
+    margin: 0 -10px 0 0;
+    background-color: white;
+}
+
+.service ul li {
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+.service ul li:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .hamburger {
+        display: block; /* Show hamburger icon on mobile */
+    }
+
+    .close {
+        display: none; /* Hide close icon on mobile by default */
+    }
+
+    .content {
+        display: none;
+        flex-direction: column;
+        background-color: #fff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 10px;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 20;
+    }
+
+    .menu-toggle:checked ~ .content {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .service ul {
+        position: relative;
+        z-index: 40;
+        width: 100%;
+        background-color: #fff;
+        left: 0;
+        margin: 30px;
+    }
+
+    .content div {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .service ul li {
+        padding: 10px 15px;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .service ul li:hover {
+        background-color: #f0f0f0;
+        color: #007bff;
+    }
+}
+
+/* Show close icon and hide hamburger when menu is open */
+.menu-toggle:checked ~ .hamburger {
+    display: none;
+}
+
+.menu-toggle:checked ~ .content {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-toggle:checked ~ .close {
+    display: block; /* Show close icon when menu is open */
+}
